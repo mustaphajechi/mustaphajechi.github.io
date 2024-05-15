@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+        h1 {
+            margin: 0;
+        }
+        h5 {
+            color: #666;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #ddd;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+        input {
+            margin: 10px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        footer {
+            background-color: rgb(48, 102, 169); /* updated to blue */
+            color: white !important; /* assuming white provides enough contrast, adjust if needed */
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+          }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function validateForm() {
+            var dob = new Date(document.getElementById('dob').value);
+            var today = new Date();
+            var ssn = document.getElementById('ssn').value;
+            var caseId = document.getElementById('caseId').value;
+        
+            if (dob >= today) {
+                alert("Date of Birth must be in the past");
+                return false;
+            }
+            if (ssn.length != 4 || isNaN(ssn)) {
+                alert("Last Four of SSN entered incorrectly");
+                return false;
+            }
+            if (!caseId) {
+                alert("Case ID cannot be empty");
+                return false;
+            }
+            switch(caseId) {
+                case "1B769L3":
+                    window.location.href = "https://v.idomoo.com/4659/0000/hk5rbu81o2w1y631gf3hp3e1u193d112x1u3a120m2ls1x.mp4";
+                    break;
+                case "1BF97J8":
+                    window.location.href = "https://v.idomoo.com/4659/0000/wc1ant1zd61s72ermk162w9j5b113kh2s3e2z8mw1g.mp4";
+                    break;
+                case "1BBF012":
+                    window.location.href = "https://v.idomoo.com/4659/0000/hk5rbu81o2w1y631gf3hp3e1u193d112x1u3a120m2ls1x.mp4";
+                    break;
+                default:
+                    alert("Invalid Case ID");
+                    return false;  // This line was preventing the form from submitting
+            }
+            return false; // Prevent the form from submitting normally
+        }        
+    </script>
+</head>
+<body>
+    <header>
+        <img src="HFC.png" alt="Health First Colorado" height="80">
+        <h1>Video Summary</h1>
+        <h5>Please provide your information below to view your video summary.</h5>
+    </header>
+    <form onsubmit="return validateForm()">
+        Date of Birth: <input type="date" id="dob"><br>
+        Last four of your SSN: <input type="text" id="ssn" maxlength="4"><br>
+        Case ID: <input type="text" id="caseId"><br>
+        <input type="submit" value="Submit">
+    </form>
+    <footer>
+        <p>For more information, please visit our <a href="https://www.healthfirstcolorado.com">Website</a>.</p>
+        <p>Privacy Policy | Terms of Service | Contact Us</p>
+    </footer>
+</body>
+</html>
